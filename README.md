@@ -8,22 +8,54 @@ To write a program to predict the price of the house and number of occupants in 
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
-1. 
-2. 
-3. 
-4. 
+1. Import the required packages and print the present data.
+2. Print the placement data and salary data.
+3. Find the null and duplicate values.
+4. Using logistic regression find the predicted values of accuracy , confusion matrices.
+5. Display the results.
 
 ## Program:
 ```
 /*
 Program to implement the multivariate linear regression model for predicting the price of the house and number of occupants in the house with SGD regressor.
-Developed by: 
-RegisterNumber:  
+Developed by: Jacob Antony M  
+RegisterNumber: 212225040137
 */
 ```
+```python
+#Using scikit-learn SGDRegressor
+from sklearn.linear_model import SGDRegressor
+from sklearn.preprocessing import StandardScaler
 
+# Features and target
+X = np.array([
+    [2, 80, 50],
+    [3, 60, 40],
+    [5, 90, 70],
+    [7, 85, 80],
+    [9, 95, 90]
+])
+y = np.array([50, 45, 70, 80, 95])
+
+# Feature scaling
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Create SGD Regressor
+sgd_reg = SGDRegressor(max_iter=1000, learning_rate='invscaling', eta0=0.01, random_state=42)
+sgd_reg.fit(X_scaled, y)
+
+# Coefficients and intercept
+print("Weights (coefficients):", sgd_reg.coef_)
+print("Intercept:", sgd_reg.intercept_)
+
+# Predictions
+y_pred = sgd_reg.predict(X_scaled)
+print("Predicted values:", y_pred)
+```
 ## Output:
-![multivariate linear regression model for predicting the price of the house and number of occupants in the house](sam.png)
+
+<img width="1687" height="127" alt="Ex-4" src="https://github.com/user-attachments/assets/a23f454e-4b9b-44bd-98b8-9c33e3f0249a" />
 
 
 ## Result:
